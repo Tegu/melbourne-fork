@@ -43,12 +43,12 @@ class Scoreboard:
         # Display voter details
         self._draw_rectangle(painter, QPoint(0, 0), QPoint(sizes.width, 30 * scaling), self.colors.main)
         self._draw_text(painter, QPoint(10 * scaling, 15 * scaling),
-                        "Now Voting: {} ({}/{})".format(contest.voters[voter_num], voter_num + 1, contest.num_voters),
+                        "Äänestäjä: {} ({}/{})".format(contest.voters[voter_num], voter_num + 1, contest.num_voters),
                         self.fonts.voter_header, self.colors.main_text, Qt.AlignLeft)
 
         # Display contest title
         self._draw_rectangle(painter, QPoint(0, 30 * scaling), QPoint(sizes.width, 30 * scaling), self.colors.accent)
-        self._draw_text(painter, QPoint(10 * scaling, 45 * scaling), "{} Results".format(self.details.title),
+        self._draw_text(painter, QPoint(10 * scaling, 45 * scaling), "{} Tulokset".format(self.details.title),
                         self.fonts.contest_header, self.colors.accent_text, Qt.AlignLeft)
 
         # Draw background rectangles for entry details

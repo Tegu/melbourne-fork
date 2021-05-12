@@ -79,10 +79,10 @@ class ScoreboardColors:
 class ScoreboardSizes:
     def __init__(self, details, fonts, voter_num):
         contest = details.contest
-        self.voter_header = QFontMetrics(fonts.voter_header).boundingRect("Now Voting: {} ({}/{})".format(
+        self.voter_header = QFontMetrics(fonts.voter_header).boundingRect("Äänestäjä: {} ({}/{})".format(
             contest.voters[voter_num], voter_num, contest.num_voters)).width()
         self.contest_header = QFontMetrics(fonts.contest_header).boundingRect(
-            "{} Results".format(details.title)).width()
+            "{} Tulokset".format(details.title)).width()
 
         self.country = 0
         self.entry_details = 0
