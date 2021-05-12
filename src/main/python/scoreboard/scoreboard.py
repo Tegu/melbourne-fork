@@ -75,7 +75,7 @@ class Scoreboard:
                 try:
                     flag = QImage(self.app_context.get_resource(join("flags", entry.flag)))
                     flag = flag.scaledToWidth(
-                        20 * scaling, Qt.SmoothTransformation)
+                        25 * scaling, Qt.SmoothTransformation)
 
                     kwargs = {}
                     if self.details.display_flag_borders:
