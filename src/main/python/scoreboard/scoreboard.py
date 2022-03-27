@@ -30,7 +30,7 @@ class Scoreboard:
         self._draw_scoreboard(painter, sizes, voter_num)
         painter.end()
 
-        output_file_path = sanitize_filename("{} – {}.png".format(voter_num + 1, self.contest.voters[voter_num]))
+        output_file_path = sanitize_filename("{:02} – {}.png".format(voter_num + 1, self.contest.voters[voter_num]))
         image.save(join(self.details.output_dir, output_file_path))
 
     def _draw_scoreboard(self, painter, sizes, voter_num):
