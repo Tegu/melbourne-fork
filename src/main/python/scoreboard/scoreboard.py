@@ -133,6 +133,33 @@ class Scoreboard:
                                                 87 * scaling + 35 * scaling * y_offset),
                                 str(votes_string), self.fonts.awarded_pts, self.colors.accent_text, Qt.AlignHCenter)
 
+            # Draw the horizontal score line
+            max_pts = max(e.display_pts[voter_num] for e in entries)
+            if entry.display_pts[voter_num] > 0 and max_pts > 0:
+                score_ratio = entry.display_pts[voter_num] / max_pts
+                nudge = 0.5 if y_offset % 2 == 1 else 0
+                score_y = 104.5 * scaling + 35 * scaling * y_offset - scaling * (1 + nudge)
+                painter.setPen(QPen(self.colors.main, 1 * scaling))
+                painter.drawLine(
+                    QPoint(10.5 * scaling + x_offset + scaling,
+                           score_y),
+                    QPoint(10.5 * scaling + x_offset + score_ratio * sizes.rectangle - scaling,
+                           score_y))
+
+                # New points with different color
+                if len(entry.votes[voter_num]) > 0:
+                    try:
+                        current_vote = int(float(entry.votes[voter_num]))
+                        current_score_ratio = (entry.display_pts[voter_num] - current_vote) / max_pts
+                        painter.setPen(QPen(self.colors.accent, 1.5 * scaling))
+                        painter.drawLine(
+                            QPoint(10.5 * scaling + x_offset + current_score_ratio * sizes.rectangle + scaling,
+                                   score_y),
+                            QPoint(10.5 * scaling + x_offset + score_ratio * sizes.rectangle - scaling,
+                                   score_y))
+                    except ValueError:
+                        pass
+
             # Draw a dividing line between entries
             if (i + 1) != left_col and (i + 1) != self.contest.num_entries:
                 painter.setPen(QPen(self.colors.grey_text, 0.5 * scaling))
