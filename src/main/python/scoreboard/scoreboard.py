@@ -120,10 +120,11 @@ class Scoreboard:
 
             # Display the entry's number of points received by the current voter
             if len(entry.votes[voter_num]) > 0:
+                rectangle_color = self.colors.accent if entry.country != contest.voters[voter_num] else self.colors.owner
                 self._draw_rectangle(painter,
                                      QPoint(59 * scaling + x_offset + sizes.flag_offset + sizes.entry_details,
                                             77 * scaling + 35 * scaling * y_offset),
-                                     QPoint(24 * scaling, 20 * scaling), self.colors.accent)
+                                     QPoint(24 * scaling, 20 * scaling), rectangle_color)
 
                 try:
                     votes_string = int(float(entry.votes[voter_num]))
@@ -149,9 +150,10 @@ class Scoreboard:
                 # New points with different color
                 if len(entry.votes[voter_num]) > 0:
                     try:
+                        line_color = self.colors.accent if entry.country != contest.voters[voter_num] else self.colors.owner
                         current_vote = int(float(entry.votes[voter_num]))
                         current_score_ratio = (entry.display_pts[voter_num] - current_vote) / max_pts
-                        painter.setPen(QPen(self.colors.accent, 1.5 * scaling))
+                        painter.setPen(QPen(line_color, 1.5 * scaling))
                         painter.drawLine(
                             QPoint(10.5 * scaling + x_offset + current_score_ratio * sizes.rectangle + scaling,
                                    score_y),

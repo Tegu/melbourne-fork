@@ -55,6 +55,7 @@ class ScoreboardColors:
         self.grey_text = ScoreboardColors._hex_to_rgb("#C4C4C4")
         self.white_text = ScoreboardColors._hex_to_rgb("#FFFFFF")
         self.country_text = ScoreboardColors._hex_to_rgb("#7E7E7E")
+        self.owner = ScoreboardColors._hex_to_rgb("#D4AF37")
 
         self.main = ScoreboardColors._hex_to_rgb(main_color)
         luminance = (self.main.red() * 0.299 + self.main.green() * 0.587 + self.main.blue() * 0.114) / 255
