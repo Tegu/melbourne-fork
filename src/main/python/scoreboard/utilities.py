@@ -32,7 +32,7 @@ class ScoreboardDetails:
 class ScoreboardFonts:
     def __init__(self, image_scaling=DEFAULT_IMAGE_scaling, windows_dpi_scaling=DEFAULT_WINDOWS_DPI_SCALING):
         # Due to rendering differences between OSX and Windows, we need to scale down the text on Windows
-        if fbs_runtime.platform.is_windows():
+        if fbs_runtime.platform.is_windows() or fbs_runtime.platform.is_linux():
             windows_mac_canonical_pixel_ratio = 72.0 / 96.0
             adjustment_factor = (196.0 / 19.0) / 14.0
             windows_ui_scaling_factor = DEFAULT_WINDOWS_DPI_SCALING / windows_dpi_scaling
