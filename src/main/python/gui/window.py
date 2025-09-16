@@ -137,6 +137,9 @@ class MainWindow(QMainWindow):
         self.flag_borders_check.setChecked(True)
         self.flag_borders_check.setEnabled(False)
 
+        self.display_ranking_check = QCheckBox('Display Ranking')
+        self.display_ranking_check.setChecked(False)
+
         scoreboard_title_label = QLabel('Scoreboard Title')
         scoreboard_title_label.setAlignment(Qt.AlignCenter)
         scoreboard_details_grid.addWidget(scoreboard_title_label, 0, 0)
@@ -147,8 +150,9 @@ class MainWindow(QMainWindow):
         scoreboard_details_grid.addWidget(self.accent_color_btn, 2, 0)
         scoreboard_details_grid.addWidget(self.reset_accent_color_btn, 2, 1)
         scoreboard_details_grid.addWidget(self.accent_color_le, 2, 2)
-        scoreboard_details_grid.addWidget(self.display_flags_check, 3, 0)
-        scoreboard_details_grid.addWidget(self.flag_borders_check, 3, 1, 1, 3)
+        scoreboard_details_grid.addWidget(self.display_flags_check, 3, 0, 1, 1)
+        scoreboard_details_grid.addWidget(self.flag_borders_check, 3, 1, 1, 2)
+        scoreboard_details_grid.addWidget(self.display_ranking_check, 4, 0, 1, 3)
         scoreboard_details_group = QGroupBox('Scoreboard Details')
         scoreboard_details_group.setLayout(scoreboard_details_grid)
 
@@ -333,6 +337,7 @@ class MainWindow(QMainWindow):
                 accent_color=self.accent_color_le.text(),
                 display_flags=self.display_flags_check.isChecked(),
                 display_flag_borders=self.display_flags_check.isChecked() and self.flag_borders_check.isChecked(),
+                display_ranking=self.display_ranking_check.isChecked(),
                 windows_dpi_scaling=dpi_scaling_factor
             ))
 

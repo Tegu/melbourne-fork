@@ -91,9 +91,12 @@ class Scoreboard:
                     continue
 
             # Display entry details
+            country_text = entry.country
+            if self.details.display_ranking:
+                country_text = "{}. {}".format(i+1, entry.country)
             self._draw_text(painter,
                             QPoint(20 * scaling + x_offset + sizes.flag_offset, 80 * scaling + 35 * scaling * y_offset),
-                            entry.country, self.fonts.country, self.colors.country_text, Qt.AlignLeft)
+                            country_text, self.fonts.country, self.colors.country_text, Qt.AlignLeft)
             self._draw_text(painter,
                             QPoint(20 * scaling + x_offset + sizes.flag_offset, 94 * scaling + 35 * scaling * y_offset),
                             "{} – {}".format(entry.artist, entry.song), self.fonts.entry_details, self.colors.black,
